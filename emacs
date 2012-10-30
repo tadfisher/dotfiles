@@ -1,10 +1,18 @@
+;; -*- mode: Lisp -*-
+
+(require 'cl)
+
 ;; ========================== PACKAGES ===========================
+
+(package-initialize)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (defvar tad-packages
   '(ac-nrepl ac-slime auto-complete clojure-mode clojurescript-mode
 	     emacs-eclim flymake-cursor flymake-jslint flymake-lintnode
-	     go-mode idle-highlight-mode magit nrepl popup rfringe
-	     yasnippet))
+	     go-mode idle-highlight-mode magit nrepl popup rainbow-mode
+	     rfringe yasnippet))
 
 (defun tad-packages-installed-p ()
   (loop for p in tad-packages
@@ -33,9 +41,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
-(package-initialize)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; auto-complete-mode
 (require 'auto-complete-config)
@@ -87,6 +92,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (adwaita)))
  '(inhibit-startup-screen t)
  '(js-indent-level 2)
  '(safe-local-variable-values (quote ((eval when (and (buffer-file-name) (file-regular-p (buffer-file-name)) (string-match-p "^[^.]" (buffer-file-name))) (emacs-lisp-mode)))))
@@ -96,4 +102,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "microsoft" :slant normal :weight normal :height 98 :width normal)))))
+ '(default ((t (:family "Consolas" :foundry "microsoft" :slant normal :weight normal :height 98 :width normal))))
+ '(header-line ((t (:inherit mode-line :background "gray" :foreground "black" :box nil :weight bold)))))
